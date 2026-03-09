@@ -1,0 +1,13 @@
+__turbopack_load_page_chunks__("/_error", [
+  "static/chunks/9d8bc_next_dist_compiled_a56d3aa0._.js",
+  "static/chunks/9d8bc_next_dist_shared_lib_3a2feddb._.js",
+  "static/chunks/9d8bc_next_dist_client_dbb63831._.js",
+  "static/chunks/9d8bc_next_dist_2fef8dc9._.js",
+  "static/chunks/9d8bc_next_error_9ddb1d08.js",
+  "static/chunks/[next]_entry_page-loader_ts_83bdc6c1._.js",
+  "static/chunks/9d8bc_react-dom_9fac7eff._.js",
+  "static/chunks/9d8bc_50e67f05._.js",
+  "static/chunks/[root-of-the-server]__348f3b37._.js",
+  "static/chunks/OneDrive_Desktop_my shisha foundation_shisha foundation_pages__error_2da965e7._.js",
+  "static/chunks/9f58e_Desktop_my shisha foundation_shisha foundation_pages__error_4a53fbd2._.js"
+])
