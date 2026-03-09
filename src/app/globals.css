@@ -37,6 +37,16 @@ body {
   min-height: 100%;
   font-family: var(--font-sans), sans-serif;
   background-color: var(--color-bg);
+  background-image: radial-gradient(
+      1200px 600px at 10% -10%,
+      rgba(0, 0, 0, 0.04),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 500px at 90% 0%,
+      rgba(0, 0, 0, 0.03),
+      transparent 55%
+    );
   color: var(--color-ink);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -148,6 +158,14 @@ button {
   scroll-margin-top: 90px;
 }
 
+.section:not(.section-dark) {
+  background-image: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.02),
+    transparent 45%
+  );
+}
+
 .section-tight {
   padding: 55px 0;
 }
@@ -212,6 +230,19 @@ button {
   font-size: 0.7rem;
   font-weight: 700;
   margin-bottom: 12px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.section-kicker::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 12px;
+  height: 1px;
+  background: currentColor;
+  transform: translateY(-50%);
 }
 
 .section-title {
@@ -238,6 +269,7 @@ button {
 .hero {
   padding: 60px 0 60px;
   border-bottom: 1px solid var(--color-border-muted);
+  background: linear-gradient(135deg, #ffffff 0%, #f7f7f7 100%);
 }
 
 .hero-grid {
@@ -298,6 +330,7 @@ button {
   font-size: 0.75rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease,
     background 0.2s ease, color 0.2s ease;
+  box-shadow: 0 8px 18px -14px rgba(0, 0, 0, 0.45);
 }
 
 .btn-primary {
@@ -338,6 +371,23 @@ a:focus-visible {
   box-shadow: var(--shadow-md);
   transition: transform 0.2s ease, box-shadow 0.2s ease,
     border-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.08),
+    transparent
+  );
 }
 
 .card:hover {
@@ -378,6 +428,29 @@ a:focus-visible {
 .service-card {
   position: relative;
   overflow: hidden;
+}
+
+.service-index {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  width: fit-content;
+  margin-bottom: 18px;
+}
+
+.service-index-line {
+  width: 26px;
+  height: 1px;
+  background: currentColor;
+  display: inline-block;
+  opacity: 0.5;
 }
 
 .service-card::after {
@@ -466,6 +539,7 @@ a:focus-visible {
   font-family: var(--font-display), sans-serif;
   font-size: 1.2rem;
   line-height: 1.4;
+  font-style: italic;
 }
 
 .stars {
@@ -473,6 +547,41 @@ a:focus-visible {
   letter-spacing: 0.2em;
   font-size: 0.9rem;
   margin-bottom: 8px;
+}
+
+.testimonial-card {
+  display: grid;
+  gap: 14px;
+}
+
+.testimonial-head {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 14px;
+  align-items: center;
+}
+
+.testimonial-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+  filter: grayscale(100%);
+}
+
+.testimonial-name {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.testimonial-role {
+  font-size: 0.85rem;
+  color: var(--color-ink-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .hero-visual {

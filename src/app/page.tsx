@@ -123,11 +123,31 @@ const testimonials = [
     quote:
       "The Hat helped us grow our brand and generate quality leads through powerful marketing campaigns.",
     label: "Client Success Story",
+    name: "Anita Verma",
+    role: "Founder",
+    company: "Saffron Realty",
+    image:
+      "https://images.unsplash.com/photo-1573497161161-c3e73707e25c?auto=format&fit=crop&fm=jpg&q=80&w=240&h=240",
   },
   {
     quote:
       "Their branding and marketing strategy helped our business reach more customers and increase sales.",
     label: "Client Success Story",
+    name: "Michael Reeves",
+    role: "CEO",
+    company: "Northbridge Hospitality",
+    image:
+      "https://images.unsplash.com/photo-1562788869-4ed32648eb72?auto=format&fit=crop&fm=jpg&q=80&w=240&h=240",
+  },
+  {
+    quote:
+      "A reliable partner for creative direction, performance campaigns, and consistent growth month after month.",
+    label: "Client Success Story",
+    name: "Sofia Alvarez",
+    role: "Marketing Lead",
+    company: "Brightline Commerce",
+    image:
+      "https://images.pexels.com/photos/10585630/pexels-photo-10585630.jpeg?cs=srgb&dl=pexels-harry-fip-3873134-10585630.jpg&fm=jpg&w=240&h=240",
   },
 ];
 
@@ -242,8 +262,12 @@ export default function Home() {
             every stage of brand growth.
           </p>
           <div className="grid-3" style={{ marginTop: "36px" }}>
-            {services.map((service) => (
+            {services.map((service, index) => (
               <div className="card service-card" key={service.title}>
+                <span className="service-index">
+                  0{index + 1}
+                  <span className="service-index-line" aria-hidden="true" />
+                </span>
                 <div className="card-title">{service.title}</div>
                 <p>{service.description}</p>
                 <div className="card-subtitle">Services include:</div>
@@ -365,7 +389,21 @@ export default function Home() {
           <h2 className="section-title">Trusted results. Proven growth.</h2>
           <div className="grid-2" style={{ marginTop: "36px" }}>
             {testimonials.map((story, index) => (
-              <div className="card" key={`${story.label}-${index}`}>
+              <div className="card testimonial-card" key={`${story.label}-${index}`}>
+                <div className="testimonial-head">
+                  <img
+                    className="testimonial-avatar"
+                    src={story.image}
+                    alt={`${story.name} headshot`}
+                    loading="lazy"
+                  />
+                  <div>
+                    <div className="testimonial-name">{story.name}</div>
+                    <div className="testimonial-role">
+                      {story.role} &middot; {story.company}
+                    </div>
+                  </div>
+                </div>
                 <span className="stars" role="img" aria-label="Five star rating">
                   &#9733;&#9733;&#9733;&#9733;&#9733;
                 </span>
