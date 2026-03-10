@@ -1,4 +1,47 @@
-﻿const services = [
+import fs from "fs";
+import path from "path";
+import Image from "next/image";
+
+const parseImageNumber = (name: string) => {
+  const match = name.match(/\d+/);
+  return match ? Number(match[0]) : Number.MAX_SAFE_INTEGER;
+};
+
+const excludedGalleryImages = new Set(["img36.jpg", "img130.jpg"]);
+
+const galleryImages = (() => {
+  try {
+    const publicDir = path.join(process.cwd(), "public");
+    return fs
+      .readdirSync(publicDir)
+      .filter(
+        (file) =>
+          file.toLowerCase().endsWith(".jpg") &&
+          !excludedGalleryImages.has(file)
+      )
+      .sort((a, b) => parseImageNumber(a) - parseImageNumber(b));
+  } catch (error) {
+    return [];
+  }
+})();
+
+const heroImage = "/img237.jpg";
+const aboutImage = "/img255.jpg";
+const serviceImages = [
+  "/img40.jpg",
+  "/img42.jpg",
+  "/img32.jpg",
+  "/img44.jpg",
+  "/img34.jpg",
+  "/img81.jpg",
+];
+const systemImages = ["/img100.jpg", "/img171.jpg", "/img174.jpg"];
+const processImage = "/img222.jpg";
+const testimonialImages = ["/img77.jpg", "/img81.jpg"];
+const contactImage = "/img140.jpg";
+const industriesImage = "/img163.jpg";
+
+const services = [
   {
     title: "Digital Marketing",
     description:
@@ -147,6 +190,7 @@ export default function Home() {
             <a href="#services">Services</a>
             <a href="#system">Brand System</a>
             <a href="#process">Process</a>
+            <a href="#gallery">Gallery</a>
             <a className="btn btn-primary" href="#consultation">
               Get Free Consultation
             </a>
@@ -178,24 +222,49 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <div className="card">
-            <div className="card-subtitle">Our mission is simple</div>
-            <div className="card-title">
-              Help businesses grow faster with powerful branding and smart
-              marketing strategies.
+          <div className="hero-visual">
+            <Image
+              src={heroImage}
+              alt="Branding and marketing campaign visual"
+              fill
+              priority
+              sizes="(max-width: 980px) 90vw, 520px"
+              className="image-cover"
+            />
+            <div className="hero-image-overlay" />
+            <div className="hero-abstract">
+              <span />
+              <span />
+              <span />
             </div>
-            <div className="divider" />
-            <p>
-              The Hat is a complete Brand Growth & Digital Marketing Company
-              that helps businesses grow from idea stage to a powerful brand.
-            </p>
-            <p>
-              We work with businesses that want to build their brand, increase
-              visibility, and generate real sales.
-            </p>
-            <p className="highlight">
-              From Idea To Industry Brand &ndash; The Hat Handles Everything.
-            </p>
+            <div className="hero-panel">
+              <div className="card-subtitle">Our mission is simple</div>
+              <div className="hero-panel-title">
+                Help businesses grow faster with powerful branding and smart
+                marketing strategies.
+              </div>
+              <p>
+                The Hat is a complete Brand Growth & Digital Marketing Company
+                that helps businesses grow from idea stage to a powerful brand.
+              </p>
+              <p className="highlight">
+                From Idea To Industry Brand &ndash; The Hat Handles Everything.
+              </p>
+              <div className="hero-panel-metrics">
+                <div className="metric">
+                  <div className="metric-value">Branding</div>
+                  <div className="metric-label">Strategy</div>
+                </div>
+                <div className="metric">
+                  <div className="metric-value">Creative</div>
+                  <div className="metric-label">Design</div>
+                </div>
+                <div className="metric">
+                  <div className="metric-value">Growth</div>
+                  <div className="metric-label">Marketing</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -219,7 +288,16 @@ export default function Home() {
               marketing strategies.
             </p>
           </div>
-          <div className="card">
+          <div className="card about-card">
+            <div className="card-media">
+              <Image
+                src={aboutImage}
+                alt="Branding strategy visual"
+                fill
+                sizes="(max-width: 980px) 90vw, 420px"
+                className="image-cover"
+              />
+            </div>
             <div className="card-title">Our team specializes in:</div>
             <ul className="list">
               <li>Digital Marketing</li>
@@ -242,8 +320,17 @@ export default function Home() {
             every stage of brand growth.
           </p>
           <div className="grid-3" style={{ marginTop: "36px" }}>
-            {services.map((service) => (
+            {services.map((service, index) => (
               <div className="card service-card" key={service.title}>
+                <div className="service-media">
+                  <Image
+                    src={serviceImages[index % serviceImages.length]}
+                    alt={`${service.title} visual`}
+                    fill
+                    sizes="(max-width: 980px) 90vw, 320px"
+                    className="image-cover"
+                  />
+                </div>
                 <div className="card-title">{service.title}</div>
                 <p>{service.description}</p>
                 <div className="card-subtitle">Services include:</div>
@@ -267,6 +354,19 @@ export default function Home() {
             <em>startup to strong market presence</em>.
           </p>
           <p className="card-subtitle">Our system includes:</p>
+          <div className="system-gallery">
+            {systemImages.map((image, index) => (
+              <div className="system-image" key={image}>
+                <Image
+                  src={image}
+                  alt={`Brand system visual ${index + 1}`}
+                  fill
+                  sizes="(max-width: 980px) 90vw, 360px"
+                  className="image-cover"
+                />
+              </div>
+            ))}
+          </div>
           <div className="grid-3" style={{ marginTop: "40px" }}>
             {brandSystemSteps.map((step, index) => (
               <div className="card process-card" key={step}>
@@ -292,6 +392,15 @@ export default function Home() {
             </p>
           </div>
           <div className="card">
+            <div className="card-media">
+              <Image
+                src={industriesImage}
+                alt="Industries growth visual"
+                fill
+                sizes="(max-width: 980px) 90vw, 420px"
+                className="image-cover"
+              />
+            </div>
             <div className="card-title">Industries include:</div>
             <ul className="list">
               {industries.map((industry) => (
@@ -306,6 +415,18 @@ export default function Home() {
         <div className="container">
           <p className="section-kicker">Our Marketing Process</p>
           <h2 className="section-title">Clear steps. Strong outcomes.</h2>
+          <div className="process-media">
+            <Image
+              src={processImage}
+              alt="Marketing process visual"
+              fill
+              sizes="(max-width: 980px) 90vw, 1080px"
+              className="image-cover"
+            />
+            <div className="process-overlay">
+              Strategy &bull; Creative &bull; Performance
+            </div>
+          </div>
           <div className="grid-3" style={{ marginTop: "36px" }}>
             {marketingProcess.map((step, index) => (
               <div className="card process-card" key={step}>
@@ -365,15 +486,56 @@ export default function Home() {
           <h2 className="section-title">Trusted results. Proven growth.</h2>
           <div className="grid-2" style={{ marginTop: "36px" }}>
             {testimonials.map((story, index) => (
-              <div className="card" key={`${story.label}-${index}`}>
-                <span className="stars" role="img" aria-label="Five star rating">
-                  &#9733;&#9733;&#9733;&#9733;&#9733;
-                </span>
-                <div className="card-subtitle">{story.label}</div>
+              <div className="card testimonial-card" key={`${story.label}-${index}`}>
+                <div className="testimonial-head">
+                  <div className="testimonial-avatar">
+                    <Image
+                      src={testimonialImages[index % testimonialImages.length]}
+                      alt={`Client testimonial ${index + 1}`}
+                      fill
+                      sizes="64px"
+                      className="image-cover"
+                    />
+                  </div>
+                  <div>
+                    <span
+                      className="stars"
+                      role="img"
+                      aria-label="Five star rating"
+                    >
+                      &#9733;&#9733;&#9733;&#9733;&#9733;
+                    </span>
+                    <div className="card-subtitle">{story.label}</div>
+                  </div>
+                </div>
                 <p className="quote">"{story.quote}"</p>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section section-muted" id="gallery">
+        <div className="container">
+          <p className="section-kicker">Brand Visuals</p>
+          <h2 className="section-title">Campaign & Design Gallery</h2>
+          <p className="section-subtitle">
+            Every image is pulled directly from the client gallery to keep the
+            website aligned with the latest creative assets.
+          </p>
+        </div>
+        <div className="gallery-rail" aria-label="Brand gallery">
+          {galleryImages.map((image, index) => (
+            <div className="gallery-card" key={image}>
+              <Image
+                src={`/${image}`}
+                alt={`Brand visual ${index + 1}`}
+                fill
+                sizes="(max-width: 980px) 70vw, 320px"
+                className="image-cover"
+              />
+            </div>
+          ))}
         </div>
       </section>
 
@@ -453,6 +615,13 @@ export default function Home() {
             <p className="section-subtitle">
               Reach out for a custom strategy and a clear growth plan.
             </p>
+            <p>
+              Share your goals and we will recommend a clear brand, marketing,
+              and sales growth roadmap built for your business.
+            </p>
+            <p className="highlight">
+              Fast response, clear next steps, measurable outcomes.
+            </p>
             <div className="button-row">
               <a className="btn btn-primary" href="#consultation">
                 Get Free Consultation
@@ -463,6 +632,15 @@ export default function Home() {
             </div>
           </div>
           <div className="card contact-card">
+            <div className="contact-media">
+              <Image
+                src={contactImage}
+                alt="Business consultation visual"
+                fill
+                sizes="(max-width: 980px) 90vw, 420px"
+                className="image-cover"
+              />
+            </div>
             <div className="card-title">Contact Details</div>
             <ul className="list">
               <li>Phone Number</li>

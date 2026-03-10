@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   color-scheme: light;
   --color-bg: #ffffff;
   --color-ink: #000000;
@@ -55,6 +55,13 @@ a {
 img {
   max-width: 100%;
   display: block;
+}
+
+.image-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 button {
@@ -181,6 +188,11 @@ button {
   box-shadow: none;
 }
 
+.section-dark .system-image {
+  border-color: #2a2a2a;
+  box-shadow: none;
+}
+
 .section-dark .btn-primary {
   background: var(--color-surface);
   color: var(--color-ink);
@@ -285,6 +297,17 @@ button {
   margin-top: 26px;
 }
 
+#contact .button-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  align-items: center;
+}
+
+#contact .button-row .btn {
+  width: 100%;
+  justify-content: center;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -346,6 +369,130 @@ a:focus-visible {
   border-color: var(--color-ink);
 }
 
+.card-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  height: 220px;
+  background: #f2f2f2;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow-sm);
+}
+
+.service-card {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: 14px;
+}
+
+.service-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  height: 160px;
+  background: #f2f2f2;
+  box-shadow: var(--shadow-sm);
+}
+
+.system-gallery {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 28px 0 6px;
+}
+
+.system-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  height: 200px;
+  background: #0f0f0f;
+  border: 1px solid #1f1f1f;
+  box-shadow: var(--shadow-sm);
+}
+
+.process-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  height: 260px;
+  background: #111111;
+  margin: 24px 0 34px;
+  box-shadow: var(--shadow-lg);
+}
+
+.process-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.05) 70%
+  );
+  color: var(--color-surface);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+.gallery-rail {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(220px, 1fr);
+  gap: 16px;
+  overflow-x: auto;
+  padding: 26px 5vw 12px;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: rgba(0, 0, 0, 0.4) transparent;
+}
+
+.gallery-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  height: 220px;
+  background: #f2f2f2;
+  border: 1px solid var(--color-border-muted);
+  box-shadow: var(--shadow-md);
+  scroll-snap-align: start;
+}
+
+.testimonial-card {
+  display: grid;
+  gap: 16px;
+}
+
+.testimonial-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.testimonial-avatar {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #f2f2f2;
+  border: 1px solid var(--color-border-muted);
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  height: 200px;
+  background: #f2f2f2;
+  box-shadow: var(--shadow-sm);
+}
+
 .section-dark .card:hover {
   transform: translateY(-2px);
   box-shadow: none;
@@ -373,11 +520,6 @@ a:focus-visible {
   text-transform: uppercase;
   font-size: 0.7rem;
   margin-bottom: 10px;
-}
-
-.service-card {
-  position: relative;
-  overflow: hidden;
 }
 
 .service-card::after {
@@ -486,10 +628,23 @@ a:focus-visible {
   box-shadow: var(--shadow-lg);
 }
 
+.hero-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.25) 60%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  z-index: 1;
+}
+
 .hero-abstract {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  z-index: 2;
 }
 
 .hero-abstract span {
@@ -523,7 +678,7 @@ a:focus-visible {
 
 .hero-panel {
   position: relative;
-  z-index: 1;
+  z-index: 3;
   display: grid;
   gap: 16px;
 }
@@ -922,6 +1077,15 @@ a:focus-visible {
     grid-template-columns: 1fr;
   }
 
+  .system-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-rail {
+    grid-auto-columns: minmax(240px, 70vw);
+    padding: 22px 6vw 10px;
+  }
+
   .hero {
     padding: 55px 0 50px;
   }
@@ -973,6 +1137,26 @@ a:focus-visible {
 
   .hero-panel-metrics {
     gap: 10px;
+  }
+
+  .card-media {
+    height: 190px;
+  }
+
+  .service-media {
+    height: 150px;
+  }
+
+  .process-media {
+    height: 220px;
+  }
+
+  .gallery-card {
+    height: 200px;
+  }
+
+  .contact-media {
+    height: 180px;
   }
 
   .card {
