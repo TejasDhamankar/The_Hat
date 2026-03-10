@@ -1,17 +1,19 @@
 ﻿import type { Metadata } from "next";
-import { Playfair_Display, Space_Grotesk } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
 
-const displayFont = Playfair_Display({
+const displayFont = Roboto({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
+  weight: ["400", "500", "700"],
 });
 
-const bodyFont = Space_Grotesk({
+const bodyFont = Roboto({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
+  weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
