@@ -1,4 +1,4 @@
-import fs from "fs";
+﻿import fs from "fs";
 import path from "path";
 import Image from "next/image";
 
@@ -582,6 +582,7 @@ export default function Home() {
               <div className="field field-full">
                 <label htmlFor="service">Service Required</label>
                 <select id="service" name="service">
+                   <option>Complete Business Setup  </option>
                   <option>Branding</option>
                   <option>Designing</option>
                   <option>Digital Marketing</option>
@@ -589,14 +590,7 @@ export default function Home() {
                   <option>Lead Generation</option>
                 </select>
               </div>
-              <div className="field field-full">
-                <label htmlFor="message">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  placeholder="Tell us about your goals"
-                />
-              </div>
+              
               <div className="field field-full">
                 <button className="btn btn-primary" type="submit">
                   Get Free Consultation
