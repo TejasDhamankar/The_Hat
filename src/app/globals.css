@@ -462,9 +462,29 @@ a:focus-visible {
   scroll-snap-align: start;
 }
 
+.testimonial-rail {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(280px, 1fr);
+  gap: 18px;
+  overflow-x: auto;
+  padding: 12px 4px 6px;
+  margin-top: 36px;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 8px;
+  overscroll-behavior-x: contain;
+  scrollbar-color: rgba(0, 0, 0, 0.35) transparent;
+  cursor: grab;
+}
+
+.testimonial-rail:active {
+  cursor: grabbing;
+}
+
 .testimonial-card {
   display: grid;
   gap: 16px;
+  scroll-snap-align: start;
 }
 
 .testimonial-head {
@@ -1086,6 +1106,11 @@ a:focus-visible {
     padding: 22px 6vw 10px;
   }
 
+  .testimonial-rail {
+    grid-auto-columns: minmax(240px, 80vw);
+    padding: 16px 6vw 10px;
+  }
+
   .hero {
     padding: 55px 0 50px;
   }
@@ -1153,6 +1178,10 @@ a:focus-visible {
 
   .gallery-card {
     height: 200px;
+  }
+
+  .testimonial-rail {
+    grid-auto-columns: minmax(220px, 85vw);
   }
 
   .contact-media {

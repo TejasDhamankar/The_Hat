@@ -172,6 +172,76 @@ const testimonials = [
       "Their branding and marketing strategy helped our business reach more customers and increase sales.",
     label: "Client Success Story",
   },
+  {
+    quote:
+      "We saw better engagement and stronger leads within the first month of working with their team.",
+    label: "Client Success Story",
+  },
+  {
+    quote:
+      "The creative designs elevated our brand presence across social media and ads.",
+    label: "Client Success Story",
+  },
+  {
+    quote:
+      "Their ad strategy reduced our cost per lead while improving conversions.",
+    label: "Client Success Story",
+  },
+  {
+    quote:
+      "We finally have a consistent brand identity across all platforms.",
+    label: "Client Success Story",
+  },
+  {
+    quote:
+      "The team delivered quick turnaround and clear communication at every step.",
+    label: "Client Success Story",
+  },
+  {
+    quote:
+      "Our sales pipeline is healthier now thanks to their lead generation system.",
+    label: "Client Success Story",
+  },
+  {
+    quote:
+      "The campaign visuals and messaging were sharp, modern, and effective.",
+    label: "Client Success Story",
+  },
+  {
+    quote:
+      "We experienced steady month-over-month growth after the new strategy launch.",
+    label: "Client Success Story",
+  },
+  {
+    quote:
+      "Their team understands business goals and translates them into results.",
+    label: "Client Success Story",
+  },
+  {
+    quote:
+      "From branding to performance marketing, everything felt well coordinated.",
+    label: "Client Success Story",
+  },
+  {
+    quote:
+      "Our store traffic increased significantly after the first set of ads.",
+    label: "Client Success Story",
+  },
+  {
+    quote:
+      "We loved the creative direction and the clarity of the marketing plan.",
+    label: "Client Success Story",
+  },
+  {
+    quote:
+      "The brand refresh gave us a more premium look and better customer trust.",
+    label: "Client Success Story",
+  },
+  {
+    quote:
+      "Their insights helped us focus on the right audience and offers.",
+    label: "Client Success Story",
+  },
 ];
 
 export default function Home() {
@@ -484,9 +554,17 @@ export default function Home() {
         <div className="container">
           <p className="section-kicker">Client Success Stories</p>
           <h2 className="section-title">Trusted results. Proven growth.</h2>
-          <div className="grid-2" style={{ marginTop: "36px" }}>
+          <div
+            className="testimonial-rail"
+            role="list"
+            aria-label="Client testimonials"
+          >
             {testimonials.map((story, index) => (
-              <div className="card testimonial-card" key={`${story.label}-${index}`}>
+              <div
+                className="card testimonial-card"
+                role="listitem"
+                key={`${story.label}-${index}`}
+              >
                 <div className="testimonial-head">
                   <div className="testimonial-avatar">
                     <Image
